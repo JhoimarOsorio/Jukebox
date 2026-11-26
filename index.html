@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JukeBox — Simulación</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark container py-3">
+      <span class="navbar-brand fw-bold d-flex align-items-center gap-2">
+        <i class="bi bi-music-note-beamed fs-4 jb-neon"></i>
+        <span
+          >JUKE<span class="jb-neon">BOX</span>
+          <small class="text-secondary fw-normal fs-6">Simulación</small></span
+        >
+      </span>
+      <ul class="nav nav-pills jb-tab-bar" id="jbTabs" role="tablist">
+        <li class="nav-item">
+          <button
+            class="nav-link active"
+            data-bs-toggle="pill"
+            data-bs-target="#tab-tv"
+          >
+            <i class="bi bi-tv me-1"></i>Pantalla bar
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            data-bs-toggle="pill"
+            data-bs-target="#tab-cliente"
+          >
+            <i class="bi bi-phone me-1"></i>Cliente (móvil)
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            data-bs-toggle="pill"
+            data-bs-target="#tab-admin"
+          >
+            <i class="bi bi-shield-lock me-1"></i>Admin (dueño)
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container pb-5">
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="tab-tv">
+          <div class="row g-4">
+            <div class="col-lg-8">
+              <div class="jb-screen">
+                <span class="jb-live"
+                  ><i class="bi bi-broadcast text-danger me-1"></i>EN VIVO</span
+                >
+                <div class="jb-eq">
+                  <span style="height: 60%"></span
+                  ><span style="height: 90%"></span
+                  ><span style="height: 45%"></span
+                  ><span style="height: 100%"></span
+                  ><span style="height: 70%"></span>
+                </div>
+                <div class="jb-now">
+                  <div
+                    class="d-flex align-items-end justify-content-between flex-wrap gap-2"
+                  >
+                    <div>
+                      <div
+                        class="text-uppercase text-info fw-semibold"
+                        style="font-size: 0.78rem; letter-spacing: 2px"
+                      >
+                        Reproduciendo ahora
+                      </div>
+                      <h2 class="fw-bold mb-0 jb-neon">Ritmo de Medianoche</h2>
+                      <div class="text-secondary">
+                        La Banda Neón · pedida por
+                        <span class="text-warning">Mesa 7</span>
+                      </div>
+                    </div>
+                    <div class="text-end">
+                      <span
+                        class="badge rounded-pill text-dark jb-gradient fs-6"
+                        >2:47 / 3:58</span
+                      >
+                    </div>
+                  </div>
+                  <div class="progress-thin mt-3">
+                    <div style="width: 70%"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex gap-2 mt-3 flex-wrap">
+                <button class="btn btn-jb px-4">
+                  <i class="bi bi-pause-fill"></i> Pausar
+                </button>
+                <button class="btn btn-outline-light">
+                  <i class="bi bi-skip-forward-fill"></i> Siguiente
+                </button>
+                <button class="btn btn-outline-secondary">
+                  <i class="bi bi-volume-up"></i> Volumen
+                </button>
+                <button class="btn btn-outline-secondary">
+                  <i class="bi bi-fullscreen"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="jb-card p-3 mb-3">
+                <h6 class="fw-bold mb-3">
+                  <i class="bi bi-list-ol me-2 jb-neon"></i>Cola de reproducción
+                </h6>
+                <div
+                  class="d-flex justify-content-between align-items-center py-2 border-bottom border-secondary border-opacity-25"
+                >
+                  <div>
+                    <span class="jb-queue-badge d-inline-grid me-2">1</span>
+                    Fuego Lento
+                  </div>
+                  <small class="text-secondary">Mesa 3</small>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center py-2 border-bottom border-secondary border-opacity-25"
+                >
+                  <div>
+                    <span class="jb-queue-badge d-inline-grid me-2">2</span>
+                    Cielo Roto
+                  </div>
+                  <small class="text-secondary">Mesa 12</small>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center py-2 border-bottom border-secondary border-opacity-25"
+                >
+                  <div>
+                    <span class="jb-queue-badge d-inline-grid me-2">3</span>
+                    Luna Eléctrica
+                  </div>
+                  <small class="text-secondary">Barra</small>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center py-2"
+                >
+                  <div>
+                    <span class="jb-queue-badge d-inline-grid me-2">4</span>
+                    Vuelve a Bailar
+                  </div>
+                  <small class="text-warning"
+                    ><i class="bi bi-star-fill"></i> VIP</small
+                  >
+                </div>
+              </div>
+
+              <div class="jb-card p-3">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-secondary">Tiempo restante</span
+                  ><strong>1:11</strong>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-secondary">Siguiente en cola</span
+                  ><strong>Fuego Lento</strong>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <span class="text-secondary">Clientes con turno</span
+                  ><strong>4</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="tab-cliente">
+          <div class="jb-phone">
+            <div class="jb-card p-3 mb-3">
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <div class="jb-cover jb-gradient text-dark">
+                  <i class="bi bi-qr-code-scan fs-5"></i>
+                </div>
+                <div>
+                  <div class="fw-bold">Escaneaste el QR</div>
+                  <small class="text-secondary"
+                    >Mesa 7 · Bar "Noche Neón"</small
+                  >
+                </div>
+              </div>
+
+              <div class="jb-cooldown rounded-3 p-3 mb-3">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold text-warning">
+                      <i class="bi bi-hourglass-split me-1"></i>Espera 10:00
+                    </div>
+                    <small class="text-secondary"
+                      >Podrás pedir otra canción al terminar</small
+                    >
+                  </div>
+                  <span class="fs-4 fw-bold text-warning">10:00</span>
+                </div>
+                <div class="progress-thin mt-3">
+                  <div style="width: 100%; background: #facc15"></div>
+                </div>
+              </div>
+
+              <div class="input-group mb-3">
+                <span
+                  class="input-group-text bg-dark text-secondary border-secondary"
+                  ><i class="bi bi-search"></i
+                ></span>
+                <input
+                  class="form-control bg-dark text-light border-secondary"
+                  placeholder="Busca canción o artista…"
+                />
+              </div>
+
+              <div class="d-flex justify-content-between mb-2">
+                <small
+                  class="text-secondary text-uppercase"
+                  style="letter-spacing: 1px"
+                  >Catálogo popular</small
+                >
+                <small class="text-info">24 resultados</small>
+              </div>
+
+              <div class="list-group list-group-flush">
+                <div
+                  class="list-group-item bg-transparent jb-song-row border-secondary border-opacity-25 d-flex align-items-center gap-3 px-2"
+                >
+                  <div class="jb-cover jb-gradient text-dark">
+                    <i class="bi bi-music-note"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="fw-semibold">Ritmo de Medianoche</div>
+                    <small class="text-secondary">La Banda Neón · 3:58</small>
+                  </div>
+                  <button class="btn btn-sm btn-jb">Pedir</button>
+                </div>
+                <div
+                  class="list-group-item bg-transparent jb-song-row border-secondary border-opacity-25 d-flex align-items-center gap-3 px-2"
+                >
+                  <div class="jb-cover jb-gradient text-dark">
+                    <i class="bi bi-music-note"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="fw-semibold">Fuego Lento</div>
+                    <small class="text-secondary">Andrea Sol · 3:21</small>
+                  </div>
+                  <button class="btn btn-sm btn-outline-light">Pedir</button>
+                </div>
+                <div
+                  class="list-group-item bg-transparent jb-song-row border-secondary border-opacity-25 d-flex align-items-center gap-3 px-2"
+                >
+                  <div class="jb-cover jb-gradient text-dark">
+                    <i class="bi bi-music-note"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="fw-semibold">Cielo Roto</div>
+                    <small class="text-secondary">Los Vitrales · 4:12</small>
+                  </div>
+                  <button class="btn btn-sm btn-outline-light">Pedir</button>
+                </div>
+                <div
+                  class="list-group-item bg-transparent jb-song-row border-secondary border-opacity-25 d-flex align-items-center gap-3 px-2"
+                >
+                  <div class="jb-cover jb-gradient text-dark">
+                    <i class="bi bi-music-note"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="fw-semibold">
+                      Luna Eléctrica
+                      <span class="badge bg-danger align-middle">+18</span>
+                    </div>
+                    <small class="text-secondary">DJ Marce · 5:04</small>
+                  </div>
+                  <button class="btn btn-sm btn-outline-light">Pedir</button>
+                </div>
+                <div
+                  class="list-group-item bg-transparent jb-song-row border-bottom-0 d-flex align-items-center gap-3 px-2"
+                >
+                  <div class="jb-cover jb-gradient text-dark">
+                    <i class="bi bi-music-note"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="fw-semibold">Vuelve a Bailar</div>
+                    <small class="text-secondary">Trío Coral · 3:33</small>
+                  </div>
+                  <button class="btn btn-sm btn-outline-light">Pedir</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="jb-card p-3 mb-3">
+              <h6 class="fw-bold mb-3">
+                <i class="bi bi-clock-history me-2 jb-neon"></i>Tus pedidos
+              </h6>
+              <div class="d-flex justify-content-between py-1">
+                <span>Fuego Lento</span
+                ><span class="badge bg-warning text-dark">En cola #1</span>
+              </div>
+              <div class="d-flex justify-content-between py-1">
+                <span>Ritmo de Medianoche</span
+                ><span class="badge bg-success">Reproducida</span>
+              </div>
+            </div>
+
+            <div
+              class="alert alert-secondary bg-opacity-10 border-secondary text-center mb-0"
+            >
+              <small
+                ><i class="bi bi-info-circle me-1"></i>Simulación: los botones
+                no envían datos reales.</small
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="tab-admin">
+          <div class="row g-3 mb-4">
+            <div class="col-6 col-lg-3">
+              <div class="jb-card jb-admin-metric p-3">
+                <small class="text-secondary d-block">Canciones hoy</small
+                ><span class="fs-3 fw-bold">147</span>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3">
+              <div
+                class="jb-card jb-admin-metric p-3"
+                style="border-color: #22d3ee"
+              >
+                <small class="text-secondary d-block">Ganancia día</small
+                ><span class="fs-3 fw-bold text-info">$ 214.500</span>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3">
+              <div
+                class="jb-card jb-admin-metric p-3"
+                style="border-color: #facc15"
+              >
+                <small class="text-secondary d-block">En cola ahora</small
+                ><span class="fs-3 fw-bold text-warning">4</span>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3">
+              <div
+                class="jb-card jb-admin-metric p-3"
+                style="border-color: #22c55e"
+              >
+                <small class="text-secondary d-block">Mesas activas</small
+                ><span class="fs-3 fw-bold text-success">19</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-lg-8">
+              <div class="jb-card p-3 mb-4">
+                <h6 class="fw-bold mb-3">
+                  <i class="bi bi-music-player me-2 jb-neon"></i>Control de
+                  reproducción
+                </h6>
+                <div class="d-flex gap-2 flex-wrap mb-3">
+                  <button class="btn btn-jb">
+                    <i class="bi bi-play-fill"></i> Reproducir
+                  </button>
+                  <button class="btn btn-outline-light">
+                    <i class="bi bi-pause-fill"></i> Pausar
+                  </button>
+                  <button class="btn btn-outline-light">
+                    <i class="bi bi-skip-forward-fill"></i> Saltar
+                  </button>
+                  <button class="btn btn-outline-danger">
+                    <i class="bi bi-x-octagon"></i> Detener todo
+                  </button>
+                </div>
+                <div class="progress-thin"><div style="width: 42%"></div></div>
+              </div>
+
+              <div class="jb-card p-3">
+                <h6 class="fw-bold mb-3">
+                  <i class="bi bi-list-check me-2 jb-neon"></i>Cola editable
+                </h6>
+                <div class="table-responsive">
+                  <table class="table table-dark table-hover align-middle mb-0">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Canción</th>
+                        <th>Cliente</th>
+                        <th>Estado</th>
+                        <th class="text-end">Acción</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Fuego Lento</td>
+                        <td>Mesa 3</td>
+                        <td>
+                          <span class="badge bg-warning text-dark"
+                            >Siguiente</span
+                          >
+                        </td>
+                        <td class="text-end">
+                          <button class="btn btn-sm btn-outline-danger">
+                            <i class="bi bi-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Cielo Roto</td>
+                        <td>Mesa 12</td>
+                        <td><span class="badge bg-secondary">En cola</span></td>
+                        <td class="text-end">
+                          <button class="btn btn-sm btn-outline-danger">
+                            <i class="bi bi-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>Luna Eléctrica</td>
+                        <td>Barra</td>
+                        <td><span class="badge bg-secondary">En cola</span></td>
+                        <td class="text-end">
+                          <button class="btn btn-sm btn-outline-danger">
+                            <i class="bi bi-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>Vuelve a Bailar</td>
+                        <td>Mesa 5</td>
+                        <td>
+                          <span class="badge bg-info text-dark">VIP ⭐</span>
+                        </td>
+                        <td class="text-end">
+                          <button class="btn btn-sm btn-outline-danger">
+                            <i class="bi bi-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="jb-card p-3 mb-4">
+                <h6 class="fw-bold mb-3">
+                  <i class="bi bi-sliders me-2 jb-neon"></i>Ajustes
+                </h6>
+                <label class="form-label small text-secondary"
+                  >Espera entre pedidos (min)</label
+                >
+                <input
+                  type="number"
+                  class="form-control bg-dark text-light border-secondary mb-3"
+                  value="10"
+                />
+                <label class="form-label small text-secondary"
+                  >Precio por canción</label
+                >
+                <div class="input-group mb-3">
+                  <span
+                    class="input-group-text bg-dark text-secondary border-secondary"
+                    >$</span
+                  >
+                  <input
+                    type="number"
+                    class="form-control bg-dark text-light border-secondary"
+                    value="1500"
+                  />
+                </div>
+                <div class="form-check form-switch mb-2">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    checked
+                    id="s1"
+                  /><label class="form-check-label small" for="s1"
+                    >Permitir propinas VIP</label
+                  >
+                </div>
+                <div class="form-check form-switch mb-2">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    checked
+                    id="s2"
+                  /><label class="form-check-label small" for="s2"
+                    >Filtrar contenido +18</label
+                  >
+                </div>
+                <div class="form-check form-switch mb-3">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="s3"
+                  /><label class="form-check-label small" for="s3"
+                    >Modo karaoke con letra</label
+                  >
+                </div>
+                <button class="btn btn-jb w-100">Guardar cambios</button>
+              </div>
+
+              <div class="jb-card p-3">
+                <h6 class="fw-bold mb-3">
+                  <i class="bi bi-bar-chart-line me-2 jb-neon"></i>Canciones por
+                  hora
+                </h6>
+                <div
+                  class="d-flex align-items-end justify-content-between"
+                  style="height: 110px"
+                >
+                  <div
+                    class="jb-gradient rounded-top"
+                    style="width: 11%; height: 35%"
+                  ></div>
+                  <div
+                    class="jb-gradient rounded-top"
+                    style="width: 11%; height: 52%"
+                  ></div>
+                  <div
+                    class="jb-gradient rounded-top"
+                    style="width: 11%; height: 78%"
+                  ></div>
+                  <div
+                    class="jb-gradient rounded-top"
+                    style="width: 11%; height: 100%"
+                  ></div>
+                  <div
+                    class="jb-gradient rounded-top"
+                    style="width: 11%; height: 64%"
+                  ></div>
+                  <div
+                    class="jb-gradient rounded-top"
+                    style="width: 11%; height: 42%"
+                  ></div>
+                </div>
+                <div
+                  class="d-flex justify-content-between text-secondary mt-2"
+                  style="font-size: 0.7rem"
+                >
+                  <span>21h</span><span>22h</span><span>23h</span
+                  ><span>00h</span><span>01h</span><span>02h</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jb-qr">
+      <div class="jb-qr-grid" id="jbQr"></div>
+      <small class="d-block mt-2">ESCANEA Y PIDE</small>
+      <div class="text-secondary" style="font-size: 0.62rem">
+        jukebox.bar/mesa7
+      </div>
+    </div>
+
+    <footer class="container jb-foot pb-5 text-center">
+      JukeBox · prototipo visual · Bootstrap 5 + HTML/CSS/JS
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      (function () {
+        const size = 11,
+          total = size * size,
+          grid = document.getElementById("jbQr");
+        if (!grid) return;
+        const reserved = new Set();
+        [
+          [0, 0],
+          [0, 1],
+          [1, 0],
+          [0, 9],
+          [0, 10],
+          [1, 10],
+          [9, 0],
+          [10, 0],
+          [10, 1],
+          [9, 10],
+          [10, 9],
+          [10, 10],
+        ].forEach(([r, c]) => reserved.add(r * size + c));
+
+        for (let i = 0; i < total; i++) {
+          const cell = document.createElement("i");
+          const r = Math.floor(i / size),
+            c = i % size;
+          const square =
+            reserved.has(i) ||
+            (r < 3 && c < 3) ||
+            (r < 3 && c > 7) ||
+            (r > 7 && c < 3);
+          const on = square
+            ? r % 2 === 0 || c % 2 === 0
+            : (i * 7919 + 13) % 5 < 2;
+          if (on) cell.className = "on";
+          grid.appendChild(cell);
+        }
+      })();
+
+      (function () {
+        const el = document.querySelector(".jb-cooldown .fs-4");
+        const bar = document.querySelector(".jb-cooldown .progress-thin > div");
+        if (!el) return;
+        let left = 600;
+        setInterval(() => {
+          left = left > 0 ? left - 1 : 600;
+          const m = String(Math.floor(left / 60)).padStart(2, "0");
+          const s = String(left % 60).padStart(2, "0");
+          el.textContent = m + ":" + s;
+          if (bar) bar.style.width = (left / 600) * 100 + "%";
+        }, 1000);
+      })();
+    </script>
+  </body>
+</html>
